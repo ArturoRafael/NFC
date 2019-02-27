@@ -6,14 +6,16 @@
 <body>
 
 <p>
-  <button class="btn btn-lg btn-default" onclick="Nfc()">NFC CLICK</button>
+  <button class="btn btn-lg btn-default" onclick="Nfcwrite()">NFC WRITE</button>
+
+  <button class="btn btn-lg btn-default" onclick="Nfcread()">NFC READ</button>
 </p>
 
 <span id="log"></span>
 
 <script type="text/javascript">
 	
-  function Nfc() {
+  function Nfcwrite() {
   
   if ('nfc' in navigator) {
     
@@ -22,7 +24,7 @@
       //Push a text string to either a tag or peer
       
       const writer = new NFCWriter();
-  		const reader = new NFCReader();
+  		
 
       writer.push(
   		  "Text meant for peers only", { target: "peer" }
@@ -33,6 +35,28 @@
   		});
 
 		    
+        
+
+          processMessage(message);
+    }), {mode: 'any'}
+    .then(() => consoleLog("Added a watch."))
+    .catch(err => consoleLog("Adding watch failed: " + err.name));
+
+      
+  } else {
+    consoleLog('NFC API not supported.');
+  }
+}
+
+
+function Nfcread() {
+  
+  if ('nfc' in navigator) {
+    
+    navigator.nfc.watch(function (message) {
+      
+      //Push a text string to either a tag or peer
+      const reader = new NFCReader();
         //Read data from tag
         consoleLog("NFC message received from URL " + message.url);
         reader.onreading = message => {
