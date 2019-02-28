@@ -16,6 +16,7 @@
 <script type="text/javascript">
 	
   function Nfcwrite() {
+      
       consoleLog('CLICK BUTTON WRITE.');
   if ('nfc' in navigator) {
     
@@ -112,6 +113,7 @@ function processJSON(data) {
 function consoleLog(data) {
   var logElement = document.getElementById('log');
   logElement.innerHTML += '<p>'+data+'</p>';
+  alert(data);
 }
 
 </script>
