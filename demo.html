@@ -14,7 +14,7 @@
 <p>
   <button class="btn btn-lg btn-default" onclick="readWriteNfc()">NFC WRITE</button>
 
-  <button class="btn btn-lg btn-default" onclick="Nfcread()">NFC READ</button>
+  <button class="btn btn-lg btn-default" onclick="readNFC()">NFC READ</button>
 </p>
 
 <div id="log"></div>
@@ -23,22 +23,26 @@
 	
 function readWriteNfc() {
   if ('nfc' in navigator) {
-    navigator.nfc.watch(function(message) {
-        consoleLog("NFC message received from URL " + message.url);
-        if (message.data[0].recordType === 'empty') {
-          navigator.nfc.push([{
-            url: message.url,
-            data: [{
-              recordType: "text",
-              data: 'Hello World'
-            }]
-          }]);
-        }
-        processMessage(message);
-      })
-      .then(() => consoleLog("Added a watch."))
-      .catch(err => consoleLog("Adding watch failed: " + err.name));
+    navigator.nfc.push(
+      "Text meant for peers only", { target: "peer" }
+    ).then(() => {
+      console.log("Message pushed.");
+      // Test assertion: re-read the NFC peer and check that the message data is
+      //                 the same text string as pushed.
+    }).catch((error) => {
+      console.log("Push failed :-( try again.");
+    });
   } else {
+    alert('NFC API not supported.');
+  }
+}
+
+function readNFC(){
+  if ('nfc' in navigator) {
+    
+    const options = { recordType: "string", mode: "any" };
+    navigator.nfc.watch(message => processMessage(message), options);
+  }else {
     alert('NFC API not supported.');
   }
 }
