@@ -16,7 +16,7 @@
 <script type="text/javascript">
 	
   function Nfcwrite() {
-  
+      consoleLog('CLICK BUTTON WRITE.');
   if ('nfc' in navigator) {
     
     navigator.nfc.watch(function (message) {
@@ -44,7 +44,7 @@
 
 
 function Nfcread() {
-  
+    consoleLog('CLICK BUTTON READ.');
   if ('nfc' in navigator) {
     
     navigator.nfc.watch(function (message) {
