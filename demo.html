@@ -11,7 +11,7 @@
   <button class="btn btn-lg btn-default" onclick="Nfcread()">NFC READ</button>
 </p>
 
-<span id="log"></span>
+<div id="log"></div>
 
 <script type="text/javascript">
 	
@@ -20,25 +20,19 @@
   if ('nfc' in navigator) {
     
     navigator.nfc.watch(function (message) {
-    	
-      //Push a text string to either a tag or peer
-      
+    	//Push a text string to either a tag or peer
       const writer = new NFCWriter();
   		
-
       writer.push(
   		  "Text meant for peers only", { target: "peer" }
   		).then(() => {
-  		  console.log("Message pushed.");
+  		  consoleLog("Message pushed.");
   		}).catch((error) => {
-  		  console.log("Push failed, try again.");
+  		  consoleLog("Push failed, try again.");
   		});
 
-		    
-        
-
           processMessage(message);
-    }), {mode: 'any'}
+    }, {mode: 'any'})
     .then(() => consoleLog("Added a watch."))
     .catch(err => consoleLog("Adding watch failed: " + err.name));
 
@@ -117,7 +111,7 @@ function processJSON(data) {
 //show html
 function consoleLog(data) {
   var logElement = document.getElementById('log');
-  logElement.innerHTML += '\n' + data;
+  logElement.innerHTML += '<p>'+data+'</p>';
 }
 
 </script>
