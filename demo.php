@@ -55,7 +55,7 @@
       //Just an anchor
   $callback .= "#result";
   ?>
-      <p><a class="btn btn-primary btn-lg" role="button" href="nfc://scan/?callback=<?php echo urlencode($callback); ?>"><span class="glyphicon glyphicon-hand-up"></span> Touch for scan a NFC Tag</a></p>
+      <p><a class="btn btn-primary btn-lg" role="button" href="nfc://scan/?callback=<?php echo urlencode($callback); ?>"><span class="glyphicon glyphicon-hand-up"></span> Touch for scan a NFC </a></p>
   </div>
   
   <?php 
