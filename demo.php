@@ -32,7 +32,7 @@
   <div class="container">
     <br/>
     <div class="jumbotron">
-      <h1>Welcome on<br/>NFC Tools API<br/>Test page</h1>
+      <h1>NFC API</h1>
       <p><span class="glyphicon glyphicon-chevron-right"></span> First, you need <a href="http://getapp.nfctools.wakdev.com/" target="_blank" title="nfc tools">NFC Tools</a> installed on your Android device</p>
       <p><span class="glyphicon glyphicon-chevron-right"></span> 2nd, you just need touch this following button on your favorite Android web browser</p>
     <?php 
