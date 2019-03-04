@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  </head>
+<body>
+  <div class="container">
+    <br/>
+    <div class="jumbotron">
+      <h1>NFC API</h1>
+      <p><span class="glyphicon glyphicon-chevron-right"></span> First, you need <a href="http://getapp.nfctools.wakdev.com/" target="_blank" title="nfc tools">NFC Tools</a> installed on your Android device</p>
+      <p><span class="glyphicon glyphicon-chevron-right"></span> 2nd, you just need touch this following button on your favorite Android web browser</p>
+        
+      <input type="url" class="form-control" name="url" id="url" value="https://tywivox.translateyourworld.com/app/vox.html?module=full-mobile&username=ALEJANDRO&email=parra548@gmail.com&room_id=parra&language=en-US&languageValue=united_states&languageText=English,%20USA%20&gender=male&av=true&auth=yes">
+
+      <p><a class="btn btn-primary btn-lg" role="button" href="#" onclick="send()"><span class="glyphicon glyphicon-hand-up"></span> Touch for scan a NFC </a></p>
+    
+      
+  </div>
+
+  
+  <br/><br/>
+  <a name="result"></a>
+  <div class="jumbotron">
+  
+      <h1>Results</h1>
+
+        <p><span class="glyphicon glyphicon-tag"></span> TAG ID</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p id="idtag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+    
+        <p><span class="glyphicon glyphicon-tag"></span> TAG SIZE</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p id="sizetag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+       
+    
+    
+        <p><span class="glyphicon glyphicon-tag"></span> TAG MAX SIZE</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p id="maxsizetag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+        
+    
+   
+        <p><span class="glyphicon glyphicon-tag"></span> TAG TYPE</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p id="typetag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+        
+    
+   
+        <p><span class="glyphicon glyphicon-tag"></span> TAG IS WRITABLE ?</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p id="iswritabletag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+     
+
+        <p><span class="glyphicon glyphicon-tag"></span> TAG CAN MAKE READ ONLY ?</p>
+          <div class="panel panel-default">
+          <div class="panel-body">
+           <p id="canmakereadonlytag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+        
+    
+     
+        <p><span class="glyphicon glyphicon-tag"></span> NDEF-TEXT</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p id="ndeftexttag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+        
+        
+        <p><span class="glyphicon glyphicon-tag"></span> NDEF-URI</p>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p id="ndefuritag" disabled class="col-md-12"></p>
+          </div>
+        </div>
+        
+      
+  </div>
+   
+</div>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script >
+      function send(){
+        var hrf = $('#url').val();
+        if(hrf.length>0){
+          hrf += "&id={TAG-ID}";
+          hrf += "&size={TAG-SIZE}";
+          hrf += "&maxsize={TAG-MAXSIZE}";
+          hrf += "&type={TAG-TYPE}";
+          hrf += "&iswritable={TAG-ISWRITABLE}";
+          hrf += "&canmakereadonly={TAG-CANMAKEREADONLY}";
+            
+          //Adding callback tag records.
+          hrf += "&ndef-text={NDEF-TEXT}";
+          hrf += "&ndef-uri={NDEF-URI}"; 
+            
+              //Just an anchor
+          hrf += "#result";
+
+          location.href="nfc://scan/?callback="+hrf;
+
+          var id = getQueryVariable("id");
+          if(id.length>0){
+            $('#idtag').text(id);
+          }
+          var size = getQueryVariable("size");
+          if(size.length>0){
+            $('#sizetag').text(size);
+          }
+          var maxsize = getQueryVariable("maxsize");
+          if(maxsize.length>0){
+            $('#maxsizetag').text(maxsize);
+          }
+          var type = getQueryVariable("type");
+          if(type.length>0){
+            $('#typetag').text(type);
+          }
+          var iswritable = getQueryVariable("iswritable");
+          if(iswritable.length>0){
+            $('#iswritabletag').text(iswritable);
+          }
+          var canmakereadonly = getQueryVariable("canmakereadonly");
+          if(canmakereadonly.length>0){
+            $('#canmakereadonlytag').text(canmakereadonly);
+          }
+
+          var ndeftext = getQueryVariable("ndef-text");
+          if(ndeftext.length>0){
+            $('#ndeftexttag').text(ndeftext);
+          }
+
+          var ndefuri = getQueryVariable("ndef-uri");
+          if(ndefuri.length>0){
+            $('#ndefuritag').text(ndefuri);
+          }
+
+        }else{
+          $('#url').focus();
+        }
+      }
+
+      function getQueryVariable(variable) {
+        var query =  window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0; i < vars.length; i++) {
+            var pair = vars[i].split("="); 
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return false;
+      }
+
+
+    </script>
+
+  </body>
+</html>
+
+
