@@ -20,14 +20,14 @@
     
   //initial call back domain
   //$callback = "http://try.api.nfc.systems/";
-  $callback = "http://tywivox.translateyourworld.com/";  
+  $callback = "https://tywivox.translateyourworld.com/app/vox.html?module=full-mobile&username=ALEJANDRO&email=parra548@gmail.com&room_id=parra&language=en-US&languageValue=united_states&languageText=English,%20USA%20&gender=male&av=true&auth=yes";  
   //Adding callback tag infos.
-  $callback .= "?tagid={TAG-ID}";
-  $callback .= "&tagsize={TAG-SIZE}";
-  $callback .= "&tagmaxsize={TAG-MAXSIZE}";
-  $callback .= "&tagtype={TAG-TYPE}";
-  $callback .= "&tagiswritable={TAG-ISWRITABLE}";
-  $callback .= "&tagcanmakereadonly={TAG-CANMAKEREADONLY}";
+  $callback .= "&id={TAG-ID}";
+  $callback .= "&size={TAG-SIZE}";
+  $callback .= "&maxsize={TAG-MAXSIZE}";
+  $callback .= "&type={TAG-TYPE}";
+  $callback .= "&iswritable={TAG-ISWRITABLE}";
+  $callback .= "&canmakereadonly={TAG-CANMAKEREADONLY}";
     
   //Adding callback tag records.
   $callback .= "&ndef-text={NDEF-TEXT}";
@@ -40,7 +40,7 @@
   </div>
   
   <?php 
-  if (isset($_GET["tagid"])){
+  if (isset($_GET["id"])){
   ?>
   
   <br/><br/>
@@ -51,12 +51,12 @@
       
       <?php
       //Recover TAG ID
-      if (isset($_GET["tagid"]) && !empty($_GET["tagid"])){
+      if (isset($_GET["id"]) && !empty($_GET["id"])){
       ?>
         <p><span class="glyphicon glyphicon-tag"></span> TAG ID</p>
         <div class="panel panel-default">
         <div class="panel-body">
-          <?php echo $_GET["tagid"]; ?>
+          <?php echo $_GET["id"]; ?>
         </div>
       </div>
         <?php 
@@ -65,12 +65,12 @@
     
     <?php
     //Recover TAG SIZE
-      if (isset($_GET["tagsize"]) && !empty($_GET["tagsize"])){
+      if (isset($_GET["size"]) && !empty($_GET["size"])){
       ?>
         <p><span class="glyphicon glyphicon-tag"></span> TAG SIZE</p>
         <div class="panel panel-default">
         <div class="panel-body">
-          <?php echo $_GET["tagsize"]; ?>
+          <?php echo $_GET["size"]; ?>
         </div>
       </div>
         <?php 
@@ -79,12 +79,12 @@
     
     <?php
     //Recover TAG MAX SIZE
-      if (isset($_GET["tagmaxsize"]) && !empty($_GET["tagmaxsize"])){
+      if (isset($_GET["maxsize"]) && !empty($_GET["maxsize"])){
       ?>
         <p><span class="glyphicon glyphicon-tag"></span> TAG MAX SIZE</p>
         <div class="panel panel-default">
         <div class="panel-body">
-          <?php echo $_GET["tagmaxsize"]; ?>
+          <?php echo $_GET["maxsize"]; ?>
         </div>
       </div>
         <?php 
@@ -93,12 +93,12 @@
     
     <?php
     //Recover TAG TYPE
-      if (isset($_GET["tagtype"]) && !empty($_GET["tagtype"])){
+      if (isset($_GET["type"]) && !empty($_GET["type"])){
       ?>
         <p><span class="glyphicon glyphicon-tag"></span> TAG TYPE</p>
         <div class="panel panel-default">
         <div class="panel-body">
-          <?php echo $_GET["tagtype"]; ?>
+          <?php echo $_GET["type"]; ?>
         </div>
       </div>
         <?php 
@@ -107,12 +107,12 @@
     
     <?php
     //Recover TAG IS WRITABLE
-      if (isset($_GET["tagiswritable"]) && !empty($_GET["tagiswritable"])){
+      if (isset($_GET["iswritable"]) && !empty($_GET["iswritable"])){
       ?>
         <p><span class="glyphicon glyphicon-tag"></span> TAG IS WRITABLE ?</p>
         <div class="panel panel-default">
         <div class="panel-body">
-          <?php echo $_GET["tagiswritable"]; ?>
+          <?php echo $_GET["iswritable"]; ?>
         </div>
       </div>
         <?php 
@@ -121,12 +121,12 @@
       
     <?php
     //Recover TAG CAN MAKE READ ONLY
-      if (isset($_GET["tagcanmakereadonly"]) && !empty($_GET["tagcanmakereadonly"])){
+      if (isset($_GET["canmakereadonly"]) && !empty($_GET["canmakereadonly"])){
       ?>
         <p><span class="glyphicon glyphicon-tag"></span> TAG CAN MAKE READ ONLY ?</p>
         <div class="panel panel-default">
         <div class="panel-body">
-          <?php echo $_GET["tagcanmakereadonly"]; ?>
+          <?php echo $_GET["canmakereadonly"]; ?>
         </div>
       </div>
         <?php 
