@@ -1,22 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-
-<p>
-  <button class="btn btn-lg btn-default" onclick="readWriteNfc()">¿¿ NFC ??</button>
-
-  
-</p>
-
-<div id="log"></div>
-
-</body>
-
-</html>
--->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +19,8 @@
     <?php 
     
   //initial call back domain
-  $callback = "http://try.api.nfc.systems/";
-    
+  //$callback = "http://try.api.nfc.systems/";
+  $callback = "http://tywivox.translateyourworld.com/";  
   //Adding callback tag infos.
   $callback .= "?tagid={TAG-ID}";
   $callback .= "&tagsize={TAG-SIZE}";
